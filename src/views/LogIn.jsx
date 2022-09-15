@@ -18,13 +18,13 @@ module.exports = function Login({ session }) {
         <form action="/login" method="POST" id="loginform" className="w-70">
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Почта</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input type="email" className="form-control" id="login_input_email" aria-describedby="emailHelp" name="email" />
             {' '}
 
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">Пароль</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" />
+            <input type="password" className="form-control" id="login_input_password" name="password" />
           </div>
           <button type="submit" className="btn btn-primary">ОК</button>
         </form>

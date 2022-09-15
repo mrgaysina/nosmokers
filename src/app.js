@@ -13,7 +13,8 @@ const app = express();
 const { sequelize } = require('../db/models');
 
 const signupRoute = require('./routes/signupRoute');
-const loginRoute = require('./routes/loginRoute')
+const loginRoute = require('./routes/loginRoute');
+const profileRoute = require('./routes/profileRoute');
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
@@ -36,13 +37,14 @@ app.use(session(sessionConfig));
 
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
+app.use('/profile', profileRoute);
 
 app.get('/logout', (req, res) => {
   try {
     if (req.session.name) {
       req.session.destroy(() => {
         res.clearCookie('nosmokers');
-        res.redirect('/');
+        res.redirect('/login');
       });
     } else {
       res.redirect('/login');

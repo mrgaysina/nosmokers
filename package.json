@@ -29,6 +29,7 @@
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "js-datepicker": "^5.18.0",
+    "mdb-ui-kit": "^5.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
