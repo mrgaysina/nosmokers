@@ -77,7 +77,7 @@ module.exports = function Layout({ children, session }) {
             <div className="collapse navbar-collapse justify-content-end" id="navbarText">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row ">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href={`/profile/${session.name}`}>Ваш профиль</a>
+                  <a className="nav-link active" aria-current="page" href={`/profile/${session.name}`} id="trytofind">Ваш профиль, {session.name}</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/chart">Рейтинг</a>

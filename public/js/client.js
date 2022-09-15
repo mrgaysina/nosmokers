@@ -15,22 +15,7 @@ counter.id = 'tickcounter-sdk';
 counter.src = '//www.tickcounter.com/static/js/loader.js';
 budg.parentNode.insertBefore(counter, budg);
 
-const endpoint = 'http://www.boredapi.com/api/activity/';
-const buttonhelp = document.getElementById('buttonhelp');
-const activityWrapper = document.querySelector('.activity');
 
-const getActivity = async (event) => {
-  event.preventDefault();
-  const isFree = event.target.children.nameItem('free').checked;
-
-  let Api = isFree ? `${endpoint}?price=0` : endpoint;
-  const response = await fetch(Api);
-  const json = await response.json();
-  const { activity, type } = json;
-  activityWrapper.value = activity;
-};
-
-buttonhelp.addEventListener('click', getActivity);
 
 
 loginform.addEventListener('submit', async (event) => {

@@ -12,26 +12,28 @@ module.exports = function Trigger({ session, triggers }) {
             <div className="input-group mb-3">
               <input
                 type="text"
-                className="activity"
+                className="form-control"
                 placeholder="Триггер"
                 aria-label="Recipient's username"
                 aria-describedby="button-addon2"
                 name="trigger"
+                id="inputhelp"
               />
-              <button className="btn btn-outline-primary" type="button" data-mdb-ripple-color="dark">
+              <button className="btn btn-outline-primary" type="button" data-mdb-ripple-color="dark" id="buttonhelp">
                 Чем отвлечься?
               </button>
             </div>
             <div className="input-group mb-3">
               <input
                 type="text"
-                className="form-control"
-                value="Предложение"
+                className="form-control activity"
+                placeholder="Предложение"
                 aria-label="Recipient's username"
                 aria-describedby="button-addon2"
-                id="buttonhelp"
+                name="help"
+                id="inputsend"
               />
-              <button className="btn btn-outline-primary" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+              <button className={`btn btn-outline-primary ${session.name}`} type="button" id="buttonsend" data-mdb-ripple-color="dark">
                 Сохранить
               </button>
             </div>
@@ -46,13 +48,14 @@ module.exports = function Trigger({ session, triggers }) {
           </thead>
           <tbody>
             {triggers.map((trigger) => (
-              <tr>
+              <tr key={trigger.id}>
                 <th scope="row">{trigger.trigger}</th>
                 <td>{trigger.action}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <script src="/js/application.js" />
       </div>
 
     </Layout>

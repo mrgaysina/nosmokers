@@ -32,7 +32,8 @@ router.get('/your-trigger/:name', async (req, res) => {
   const { session } = req;
   const userName = await User.findOne({ where: { name: session.name } });
   if (session && userName) {
-    const triggers = await Trigger.findAll({raw: true,
+    const triggers = await Trigger.findAll({
+      raw: true,
       include: [{
         model: User, where: { name: req.params.name },
       }],
@@ -44,7 +45,17 @@ router.get('/your-trigger/:name', async (req, res) => {
   }
 });
 
-router.post('/your-trigger/:name', async (req, res) => {
+router.put('/your-trigger/:name', async (req, res) => {
+  const { trigger, help } = req.body;
+  const { session } = req;
+  const userName = await User.findOne({ where: { name: session.name } });
+  if (userName) {
+    const newHelp = await Trigger.create({raw: true, userId: userName.id, trigger, action: help });
+    console.log(newHelp.dataValues);
+    res.json({ isCreateSuccessfully: true, newTrigger: newHelp.dataValues.trigger, newAction: newHelp.dataValues.action });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 module.exports = router;
